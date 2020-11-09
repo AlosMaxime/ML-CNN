@@ -1,0 +1,17 @@
+To use my version of the programs:
+Just copy the 3 packages to your workspace then catkin_make, launch training as described below, go back to workspace directory and use roslaunch floor_plane_deep fp.classify.launch or roslaunch shore_follower fp.classify.launch. You do not need to copy the models anywhere, I adjusted the directories in the launch files so the programs finds the models directly where they are generated.
+
+
+To launch objective 1 training: Go to tensorflow directory then use the following commands.
+
+python3 train.py --train_file ../floor_plane_deep/data1/train/labels.txt --train_root ../floor_plane_deep/data1/train --val_file ../floor_plane_deep/data1/val/labels.txt --val_root ../floor_plane_deep/data1/val --learning_rate 0.001 --iter 10000 --dropout 0.1 --classes 2 --output ../floor_plane_deep/data1/test
+
+tensorboard --logdir ../floor_plane_deep/data1/test/tensorboard
+
+
+
+To launch objective 2 training: Go to tensorflow directory then use the following commands.
+
+python3 train.py --train_file ../shore_follower/data1/train/labels.txt --train_root ../shore_follower/data1/train --val_file ../shore_follower/data1/val/labels.txt --val_root ../shore_follower/data1/val --learning_rate 0.001 --iter 10000 --dropout 0.1 --classes 3 --output ../shore_follower/data1/test
+
+tensorboard --logdir ../shore_follower/data1/test/tensorboard
